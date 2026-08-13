@@ -1,834 +1,799 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Partido 777 | Página Oficial</title>
-
-    <meta name="description" content="Página oficial do Partido 777. Conheça nossa organização, propostas, projetos e estrutura.">
-
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: Arial, Helvetica, sans-serif;
-            background: #07111f;
-            color: #ffffff;
-        }
-
-        /* HEADER */
-
-        header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 72px;
-            background: rgba(5, 15, 28, 0.95
-            border-bottom: 1px solid rgba(255,255,255,0.08);
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0 7%;
-            z-index: 1000;
-            backdrop-filter: blur(10px);
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            font-size: 22px;
-            font-weight: 800;
-            letter-spacing: 1px;
-        }
-
-        .logo-icon {
-            width: 42px;
-            height: 42px;
-            border-radius: 10px;
-            background: linear-gradient(135deg, #087cff, #004b9b);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-weight: 900;
-            box-shadow: 0 0 20px rgba(0,124,255,0.25);
-        }
-
-        nav {
-            display: flex;
-            gap: 28px;
-        }
-
-        nav a {
-            color: #dbe9ff;
-            text-decoration: none;
-            font-size: 14px;
-            font-weight: 600;
-            transition: 0.3s;
-        }
-
-        nav a:hover {
-            color: #2994ff;
-        }
-
-        /* HERO */
-
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 120px 20px 80px;
-            position: relative;
-            overflow: hidden;
-            background:
-                radial-gradient(circle at 50% 30%, rgba(0,115,255,0.22), transparent 35%),
-                linear-gradient(180deg, #07182c 0%, #07111f 100%);
-        }
-
-        .hero::before {
-            content: "";
-            position: absolute;
-            width: 500px;
-            height: 500px;
-            border-radius: 50%;
-            border: 1px solid rgba(0,136,255,0.15);
-            box-shadow:
-                0 0 0 70px rgba(0,136,255,0.025),
-                0 0 0 140px rgba(0,136,255,0.02);
-        }
-
-        .hero-content {
-            max-width: 900px;
-            position: relative;
-            z-index: 2;
-        }
-
-        .badge {
-            display: inline-block;
-            padding: 8px 16px;
-            border-radius: 30px;
-            background: rgba(0,123,255,0.12);
-            border: 1px solid rgba(0,139,255,0.3);
-            color: #4da8ff;
-            font-size: 13px;
-            font-weight: 700;
-            margin-bottom: 25px;
-        }
-
-        .hero h1 {
-            font-size: clamp(55px, 10vw, 115px);
-            line-height: 0.9;
-            font-weight: 900;
-            letter-spacing: -5px;
-            margin-bottom: 25px;
-        }
-
-        .hero h1 span {
-            color: #1688ff;
-        }
-
-        .hero p {
-            max-width: 650px;
-            margin: auto;
-            color: #a9bad0;
-            font-size: 18px;
-            line-height: 1.7;
-        }
-
-        .buttons {
-            margin-top: 35px;
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            flex-wrap: wrap;
-        }
-
-        .btn {
-            padding: 14px 24px;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: 700;
-            transition: 0.3s;
-        }
-
-        .btn-primary {
-            background: #087cff;
-            color: white;
-            box-shadow: 0 10px 30px rgba(0,124,255,0.2);
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-3px);
-            background: #2994ff;
-        }
-
-        .btn-secondary {
-            border: 1px solid rgba(255,255,255,0.15);
-            color: white;
-            background: rgba(255,255,255,0.03);
-        }
-
-        .btn-secondary:hover {
-            background: rgba(255,255,255,0.08);
-        }
-
-        /* SECTIONS */
-
-        section {
-            padding: 100px 7%;
-        }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 55px;
-        }
-
-        .section-title small {
-            color: #1688ff;
-            font-weight: 800;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-
-        .section-title h2 {
-            font-size: 42px;
-            margin-top: 10px;
-        }
-
-        .section-title p {
-            color: #899bb0;
-            max-width: 650px;
-            margin: 15px auto 0;
-            line-height: 1.7;
-        }
-
-        /* SOBRE */
-
-        .about {
-            background: #081522;
-        }
-
-        .about-grid {
-            max-width: 1100px;
-            margin: auto;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 30px;
-        }
-
-        .card {
-            background: #0b1b2c;
-            border: 1px solid rgba(255,255,255,0.07);
-            border-radius: 15px;
-            padding: 30px;
-            transition: 0.3s;
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
-            border-color: rgba(0,135,255,0.35);
-        }
-
-        .card h3 {
-            margin-bottom: 15px;
-            font-size: 22px;
-        }
-
-        .card p {
-            color: #9aabbe;
-            line-height: 1.8;
-        }
-
-        /* PROPOSTAS */
-
-        .propostas-grid {
-            max-width: 1100px;
-            margin: auto;
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-        }
-
-        .proposal {
-            background: linear-gradient(145deg, #0b1c2e, #091624);
-            padding: 30px;
-            border-radius: 15px;
-            border: 1px solid rgba(255,255,255,0.07);
-        }
-
-        .proposal-number {
-            color: #1688ff;
-            font-size: 14px;
-            font-weight: 900;
-            margin-bottom: 20px;
-        }
-
-        .proposal h3 {
-            margin-bottom: 12px;
-        }
-
-        .proposal p {
-            color: #91a3b8;
-            line-height: 1.7;
-            font-size: 14px;
-        }
-
-        /* DIRETORIA */
-
-        .diretoria {
-            background: #081522;
-        }
-
-        .members {
-            max-width: 1000px;
-            margin: auto;
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-        }
-
-        .member {
-            text-align: center;
-            background: #0b1b2c;
-            padding: 30px;
-            border-radius: 15px;
-            border: 1px solid rgba(255,255,255,0.07);
-        }
-
-        .avatar {
-            width: 80px;
-            height: 80px;
-            margin: 0 auto 18px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #087cff, #003b7a);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 27px;
-            font-weight: 900;
-        }
-
-        .member h3 {
-            margin-bottom: 7px;
-        }
-
-        .member span {
-            color: #1688ff;
-            font-size: 13px;
-            font-weight: 700;
-        }
-
-        /* NOTÍCIAS */
-
-        .news-grid {
-            max-width: 1100px;
-            margin: auto;
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-        }
-
-        .news {
-            background: #0b1b2c;
-            border-radius: 15px;
-            overflow: hidden;
-            border: 1px solid rgba(255,255,255,0.07);
-        }
-
-        .news-top {
-            height: 120px;
-            background: linear-gradient(135deg, #087cff, #003c7c);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 38px;
-            font-weight: 900;
-        }
-
-        .news-content {
-            padding: 25px;
-        }
-
-        .news-content small {
-            color: #1688ff;
-        }
-
-        .news-content h3 {
-            margin: 10px 0;
-        }
-
-        .news-content p {
-            color: #91a3b8;
-            line-height: 1.6;
-            font-size: 14px;
-        }
-
-        /* CONTATO */
-
-        .contact {
-            background: #081522;
-            text-align: center;
-        }
-
-        .contact-box {
-            max-width: 750px;
-            margin: auto;
-            background: #0b1b2c;
-            padding: 45px;
-            border-radius: 18px;
-            border: 1px solid rgba(255,255,255,0.07);
-        }
-
-        .contact-box p {
-            color: #9aabbe;
-            line-height: 1.7;
-            margin: 15px 0 25px;
-        }
-
-        /* FOOTER */
-
-        footer {
-            background: #050d16;
-            border-top: 1px solid rgba(255,255,255,0.06);
-            padding: 35px 7%;
-            text-align: center;
-        }
-
-        footer strong {
-            color: #1688ff;
-        }
-
-        footer p {
-            color: #68798c;
-            margin-top: 8px;
-            font-size: 13px;
-        }
-
-        /* MOBILE */
-
-        @media (max-width: 850px) {
-
-            header {
-                padding: 0 20px;
-            }
-
-            nav {
-                display: none;
-            }
-
-            section {
-                padding: 75px 20px;
-            }
-
-            .about-grid,
-            .propostas-grid,
-            .members,
-            .news-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .hero h1 {
-                letter-spacing: -3px;
-            }
-
-            .section-title h2 {
-                font-size: 34px;
-            }
-
-            .contact-box {
-                padding: 30px 20px;
-            }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Partido 777</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    background:#050d18;
+    color:white;
+}
+
+/* MENU */
+
+header{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:75px;
+    background:rgba(4,12,23,.94);
+    backdrop-filter:blur(12px);
+    border-bottom:1px solid rgba(255,255,255,.08);
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 7%;
+    z-index:1000;
+}
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    font-weight:900;
+    font-size:20px;
+}
+
+.logo-box{
+    width:44px;
+    height:44px;
+    border-radius:10px;
+    background:linear-gradient(135deg,#1688ff,#004b9c);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-weight:900;
+    box-shadow:0 0 25px rgba(22,136,255,.3);
+}
+
+nav{
+    display:flex;
+    gap:25px;
+}
+
+nav a{
+    color:#dceaff;
+    text-decoration:none;
+    font-size:14px;
+    font-weight:bold;
+    transition:.3s;
+}
+
+nav a:hover{
+    color:#1688ff;
+}
+
+/* HERO */
+
+.hero{
+    min-height:100vh;
+    padding:140px 20px 80px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    background:
+    radial-gradient(circle at center,rgba(0,119,255,.25),transparent 40%),
+    linear-gradient(180deg,#071a31,#050d18);
+}
+
+.hero-content{
+    max-width:900px;
+}
+
+.tag{
+    display:inline-block;
+    padding:9px 18px;
+    border:1px solid rgba(22,136,255,.4);
+    background:rgba(22,136,255,.1);
+    color:#4da5ff;
+    border-radius:30px;
+    font-size:13px;
+    font-weight:bold;
+    margin-bottom:25px;
+}
+
+.hero h1{
+    font-size:clamp(60px,11vw,120px);
+    line-height:.9;
+    font-weight:900;
+    letter-spacing:-5px;
+    margin-bottom:25px;
+}
+
+.hero h1 span{
+    color:#1688ff;
+}
+
+.hero p{
+    color:#aabbd0;
+    font-size:18px;
+    line-height:1.7;
+    max-width:650px;
+    margin:auto;
+}
+
+.buttons{
+    margin-top:35px;
+    display:flex;
+    justify-content:center;
+    gap:15px;
+    flex-wrap:wrap;
+}
+
+.btn{
+    display:inline-block;
+    padding:15px 25px;
+    border-radius:8px;
+    text-decoration:none;
+    font-weight:bold;
+    transition:.3s;
+}
+
+.primary{
+    background:#087cff;
+    color:white;
+}
+
+.primary:hover{
+    background:#2994ff;
+    transform:translateY(-3px);
+}
+
+.secondary{
+    color:white;
+    border:1px solid rgba(255,255,255,.15);
+    background:rgba(255,255,255,.04);
+}
+
+.secondary:hover{
+    background:rgba(255,255,255,.1);
+}
+
+/* SEÇÕES */
+
+section{
+    padding:100px 7%;
+}
+
+.section-title{
+    text-align:center;
+    margin-bottom:50px;
+}
+
+.section-title small{
+    color:#1688ff;
+    font-weight:900;
+    letter-spacing:2px;
+}
+
+.section-title h2{
+    font-size:42px;
+    margin-top:10px;
+}
+
+.section-title p{
+    color:#8fa1b6;
+    margin:15px auto;
+    max-width:650px;
+    line-height:1.7;
+}
+
+/* SOBRE */
+
+.dark{
+    background:#081421;
+}
+
+.grid{
+    max-width:1100px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:20px;
+}
+
+.card{
+    background:#0b1c2e;
+    padding:30px;
+    border-radius:15px;
+    border:1px solid rgba(255,255,255,.07);
+    transition:.3s;
+}
+
+.card:hover{
+    transform:translateY(-5px);
+    border-color:rgba(22,136,255,.4);
+}
+
+.card h3{
+    margin-bottom:15px;
+}
+
+.card p{
+    color:#94a7bc;
+    line-height:1.8;
+}
+
+/* PROPOSTAS */
+
+.propostas{
+    max-width:1100px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+}
+
+.proposta{
+    background:#0b1b2c;
+    padding:30px;
+    border-radius:15px;
+    border:1px solid rgba(255,255,255,.07);
+}
+
+.numero{
+    color:#1688ff;
+    font-size:14px;
+    font-weight:900;
+    margin-bottom:20px;
+}
+
+.proposta h3{
+    margin-bottom:12px;
+}
+
+.proposta p{
+    color:#91a3b8;
+    line-height:1.7;
+}
+
+/* DIRETORIA */
+
+.diretoria{
+    max-width:1100px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+}
+
+.membro{
+    text-align:center;
+    background:#0b1b2c;
+    padding:30px;
+    border-radius:15px;
+    border:1px solid rgba(255,255,255,.07);
+}
+
+.avatar{
+    width:75px;
+    height:75px;
+    border-radius:50%;
+    margin:0 auto 18px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:linear-gradient(135deg,#1688ff,#004b9c);
+    font-size:25px;
+    font-weight:900;
+}
+
+.membro span{
+    display:block;
+    margin-top:8px;
+    color:#1688ff;
+    font-size:13px;
+    font-weight:bold;
+}
+
+/* NOTÍCIAS */
+
+.noticias{
+    max-width:1100px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+}
+
+.noticia{
+    background:#0b1b2c;
+    border-radius:15px;
+    overflow:hidden;
+    border:1px solid rgba(255,255,255,.07);
+}
+
+.noticia-top{
+    height:120px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:linear-gradient(135deg,#087cff,#003d7c);
+    font-size:35px;
+    font-weight:900;
+}
+
+.noticia-content{
+    padding:25px;
+}
+
+.noticia-content small{
+    color:#1688ff;
+    font-weight:bold;
+}
+
+.noticia-content h3{
+    margin:10px 0;
+}
+
+.noticia-content p{
+    color:#91a3b8;
+    line-height:1.6;
+}
+
+/* CONTATO */
+
+.contato{
+    text-align:center;
+    background:#081421;
+}
+
+.contato-box{
+    max-width:700px;
+    margin:auto;
+    background:#0b1b2c;
+    padding:45px;
+    border-radius:18px;
+    border:1px solid rgba(255,255,255,.07);
+}
+
+.contato-box p{
+    color:#96a8bb;
+    line-height:1.7;
+    margin:15px 0 25px;
+}
+
+/* RODAPÉ */
+
+footer{
+    background:#030912;
+    text-align:center;
+    padding:35px 20px;
+    border-top:1px solid rgba(255,255,255,.07);
+}
+
+footer strong{
+    color:#1688ff;
+}
+
+footer p{
+    color:#68798c;
+    margin-top:8px;
+    font-size:13px;
+}
+
+/* CELULAR */
+
+@media(max-width:850px){
+
+    header{
+        padding:0 20px;
+    }
+
+    nav{
+        display:none;
+    }
+
+    section{
+        padding:75px 20px;
+    }
+
+    .grid,
+    .propostas,
+    .diretoria,
+    .noticias{
+        grid-template-columns:1fr;
+    }
+
+    .hero h1{
+        font-size:65px;
+        letter-spacing:-3px;
+    }
+
+    .section-title h2{
+        font-size:34px;
+    }
+
+    .contato-box{
+        padding:30px 20px;
+    }
+}
+</style>
 </head>
 
 <body>
 
 <header>
 
-    <div class="logo">
-        <div class="logo-icon">777</div>
-        PARTIDO 777
-    </div>
+<div class="logo">
+    <div class="logo-box">777</div>
+    PARTIDO 777
+</div>
 
-    <nav>
-        <a href="#inicio">Início</a>
-        <a href="#partido">O Partido</a>
-        <a href="#propostas">Propostas</a>
-        <a href="#diretoria">Diretoria</a>
-        <a href="#noticias">Notícias</a>
-        <a href="#contato">Contato</a>
-    </nav>
+<nav>
+    <a href="#inicio">Início</a>
+    <a href="#partido">O Partido</a>
+    <a href="#propostas">Propostas</a>
+    <a href="#diretoria">Diretoria</a>
+    <a href="#noticias">Notícias</a>
+    <a href="#contato">Contato</a>
+</nav>
 
 </header>
 
 
-<!-- INÍCIO -->
-
 <section class="hero" id="inicio">
 
-    <div class="hero-content">
+<div class="hero-content">
 
-        <div class="badge">
-            ORGANIZAÇÃO • PARTICIPAÇÃO • RESPONSABILIDADE
-        </div>
+<div class="tag">
+    ORGANIZAÇÃO • PARTICIPAÇÃO • RESPONSABILIDADE
+</div>
 
-        <h1>
-            PARTIDO <span>777</span>
-        </h1>
+<h1>
+    PARTIDO <span>777</span>
+</h1>
 
-        <p>
-            Uma organização construída com participação,
-            responsabilidade e compromisso com o desenvolvimento
-            da nossa comunidade.
-        </p>
+<p>
+    Segurança, proteção, responsabilidade e participação.
+    Conheça o Partido 777 e acompanhe nossos projetos,
+    propostas e comunicados oficiais.
+</p>
 
-        <div class="buttons">
-            <a href="#propostas" class="btn btn-primary">
-                Conheça nossas propostas
-            </a>
+<div class="buttons">
 
-            <a href="#partido" class="btn btn-secondary">
-                Conheça o partido
-            </a>
-        </div>
+<a href="#propostas" class="btn primary">
+    Nossas propostas
+</a>
 
-    </div>
+<a href="#partido" class="btn secondary">
+    Conheça o partido
+</a>
 
-</section>
+</div>
 
-
-<!-- SOBRE -->
-
-<section class="about" id="partido">
-
-    <div class="section-title">
-        <small>Sobre nós</small>
-        <h2>Conheça o Partido 777</h2>
-
-        <p>
-            Conheça nossa organização, nossos princípios
-            e a forma como trabalhamos.
-        </p>
-    </div>
-
-    <div class="about-grid">
-
-        <div class="card">
-            <h3>Quem somos</h3>
-
-            <p>
-                O Partido 777 é uma organização que busca reunir
-                pessoas interessadas em participar ativamente
-                da construção de projetos e iniciativas para
-                a comunidade.
-            </p>
-        </div>
-
-        <div class="card">
-            <h3>Nossa missão</h3>
-
-            <p>
-                Promover organização, participação e responsabilidade,
-                incentivando o diálogo e a criação de projetos
-                voltados ao desenvolvimento coletivo.
-            </p>
-        </div>
-
-        <div class="card">
-            <h3>Nossos princípios</h3>
-
-            <p>
-                Transparência, responsabilidade, respeito,
-                participação e compromisso são princípios
-                fundamentais da organização.
-            </p>
-        </div>
-
-        <div class="card">
-            <h3>Participação</h3>
-
-            <p>
-                Acreditamos que a participação das pessoas é
-                essencial para identificar problemas, discutir
-                soluções e desenvolver novas iniciativas.
-            </p>
-        </div>
-
-    </div>
+</div>
 
 </section>
 
 
-<!-- PROPOSTAS -->
+<section class="dark" id="partido">
+
+<div class="section-title">
+
+<small>SOBRE NÓS</small>
+
+<h2>Conheça o Partido 777</h2>
+
+<p>
+    Um espaço dedicado à organização, participação,
+    segurança e desenvolvimento da comunidade.
+</p>
+
+</div>
+
+<div class="grid">
+
+<div class="card">
+<h3>Quem somos</h3>
+<p>
+O Partido 777 reúne pessoas interessadas em participar
+de projetos, iniciativas e decisões importantes para
+a comunidade.
+</p>
+</div>
+
+<div class="card">
+<h3>Nossa missão</h3>
+<p>
+Trabalhar pela organização, segurança, proteção,
+responsabilidade e desenvolvimento coletivo.
+</p>
+</div>
+
+<div class="card">
+<h3>Nossos princípios</h3>
+<p>
+Respeito, responsabilidade, transparência,
+organização e participação.
+</p>
+</div>
+
+<div class="card">
+<h3>Participação</h3>
+<p>
+A participação da comunidade é fundamental para
+discutirmos ideias e construirmos novos projetos.
+</p>
+</div>
+
+</div>
+
+</section>
+
 
 <section id="propostas">
 
-    <div class="section-title">
-        <small>Diretrizes</small>
-        <h2>Nossas Propostas</h2>
+<div class="section-title">
 
-        <p>
-            Algumas das principais áreas que fazem parte
-            da nossa agenda.
-        </p>
-    </div>
+<small>DIRETRIZES</small>
 
-    <div class="propostas-grid">
+<h2>Nossas Propostas</h2>
 
-        <div class="proposal">
-            <div class="proposal-number">01</div>
-            <h3>Educação</h3>
+<p>
+Confira algumas das principais áreas de atuação
+do Partido 777.
+</p>
 
-            <p>
-                Incentivo a iniciativas educacionais,
-                capacitação e oportunidades de aprendizado.
-            </p>
-        </div>
+</div>
 
-        <div class="proposal">
-            <div class="proposal-number">02</div>
-            <h3>Segurança</h3>
+<div class="propostas">
 
-            <p>
-                Desenvolvimento de projetos voltados
-                à segurança e à prevenção.
-            </p>
-        </div>
+<div class="proposta">
+<div class="numero">01</div>
+<h3>Segurança</h3>
+<p>
+Fortalecimento de iniciativas voltadas à segurança
+e à proteção da comunidade.
+</p>
+</div>
 
-        <div class="proposal">
-            <div class="proposal-number">03</div>
-            <h3>Desenvolvimento</h3>
+<div class="proposta">
+<div class="numero">02</div>
+<h3>Proteção</h3>
+<p>
+Criação de projetos destinados à proteção
+e ao bem-estar da população.
+</p>
+</div>
 
-            <p>
-                Apoio a projetos que estimulem desenvolvimento,
-                inovação e novas oportunidades.
-            </p>
-        </div>
+<div class="proposta">
+<div class="numero">03</div>
+<h3>Educação</h3>
+<p>
+Incentivo à educação, capacitação e desenvolvimento
+de novas oportunidades.
+</p>
+</div>
 
-        <div class="proposal">
-            <div class="proposal-number">04</div>
-            <h3>Transparência</h3>
+<div class="proposta">
+<div class="numero">04</div>
+<h3>Transparência</h3>
+<p>
+Divulgação de informações e incentivo à
+prestação de contas.
+</p>
+</div>
 
-            <p>
-                Incentivo à divulgação de informações
-                e prestação de contas.
-            </p>
-        </div>
+<div class="proposta">
+<div class="numero">05</div>
+<h3>Desenvolvimento</h3>
+<p>
+Apoio a projetos que promovam desenvolvimento
+e inovação.
+</p>
+</div>
 
-        <div class="proposal">
-            <div class="proposal-number">05</div>
-            <h3>Participação</h3>
+<div class="proposta">
+<div class="numero">06</div>
+<h3>Participação</h3>
+<p>
+Criação de espaços para diálogo e participação
+da comunidade.
+</p>
+</div>
 
-            <p>
-                Criação de espaços para participação
-                e diálogo com a comunidade.
-            </p>
-        </div>
-
-        <div class="proposal">
-            <div class="proposal-number">06</div>
-            <h3>Projetos Sociais</h3>
-
-            <p>
-                Incentivo a iniciativas sociais e
-                projetos voltados ao bem coletivo.
-            </p>
-        </div>
-
-    </div>
+</div>
 
 </section>
 
 
-<!-- DIRETORIA -->
+<section class="dark" id="diretoria">
 
-<section class="diretoria" id="diretoria">
+<div class="section-title">
 
-    <div class="section-title">
-        <small>Organização</small>
-        <h2>Diretoria</h2>
+<small>ORGANIZAÇÃO</small>
 
-        <p>
-            Conheça a estrutura de liderança do Partido 777.
-        </p>
-    </div>
+<h2>Diretoria</h2>
 
-    <div class="members">
+<p>
+Estrutura organizacional do Partido 777.
+</p>
 
-        <div class="member">
-            <div class="avatar">P</div>
-            <h3>Presidente</h3>
-            <span>PARTIDO 777</span>
-        </div>
+</div>
 
-        <div class="member">
-            <div class="avatar">V</div>
-            <h3>Vice-Presidente</h3>
-            <span>PARTIDO 777</span>
-        </div>
+<div class="diretoria">
 
-        <div class="member">
-            <div class="avatar">D</div>
-            <h3>Diretor Geral</h3>
-            <span>PARTIDO 777</span>
-        </div>
+<div class="membro">
+<div class="avatar">P</div>
+<h3>Presidente</h3>
+<span>PARTIDO 777</span>
+</div>
 
-        <div class="member">
-            <div class="avatar">C</div>
-            <h3>Corregedoria</h3>
-            <span>PARTIDO 777</span>
-        </div>
+<div class="membro">
+<div class="avatar">V</div>
+<h3>Vice-Presidente</h3>
+<span>PARTIDO 777</span>
+</div>
 
-        <div class="member">
-            <div class="avatar">S</div>
-            <h3>Secretaria</h3>
-            <span>PARTIDO 777</span>
-        </div>
+<div class="membro">
+<div class="avatar">D</div>
+<h3>Diretor Geral</h3>
+<span>PARTIDO 777</span>
+</div>
 
-        <div class="member">
-            <div class="avatar">A</div>
-            <h3>Assessoria</h3>
-            <span>PARTIDO 777</span>
-        </div>
+<div class="membro">
+<div class="avatar">C</div>
+<h3>Corregedoria</h3>
+<span>PARTIDO 777</span>
+</div>
 
-    </div>
+<div class="membro">
+<div class="avatar">S</div>
+<h3>Secretaria</h3>
+<span>PARTIDO 777</span>
+</div>
+
+<div class="membro">
+<div class="avatar">A</div>
+<h3>Assessoria</h3>
+<span>PARTIDO 777</span>
+</div>
+
+</div>
 
 </section>
 
-
-<!-- NOTÍCIAS -->
 
 <section id="noticias">
 
-    <div class="section-title">
-        <small>Atualizações</small>
-        <h2>Notícias e Comunicados</h2>
+<div class="section-title">
 
-        <p>
-            Acompanhe as principais atualizações do Partido 777.
-        </p>
-    </div>
+<small>ATUALIZAÇÕES</small>
 
-    <div class="news-grid">
+<h2>Notícias e Comunicados</h2>
 
-        <div class="news">
+<p>
+Acompanhe as atualizações oficiais do Partido 777.
+</p>
 
-            <div class="news-top">777</div>
+</div>
 
-            <div class="news-content">
+<div class="noticias">
 
-                <small>COMUNICADO</small>
+<div class="noticia">
 
-                <h3>Bem-vindo ao Partido 777</h3>
+<div class="noticia-top">
+777
+</div>
 
-                <p>
-                    Este é o portal oficial de informações
-                    e comunicados da organização.
-                </p>
+<div class="noticia-content">
 
-            </div>
+<small>COMUNICADO</small>
 
-        </div>
+<h3>Portal Oficial</h3>
 
+<p>
+Bem-vindo ao portal oficial do Partido 777.
+</p>
 
-        <div class="news">
+</div>
 
-            <div class="news-top">01</div>
-
-            <div class="news-content">
-
-                <small>PROJETO</small>
-
-                <h3>Novos projetos</h3>
-
-                <p>
-                    Confira as iniciativas e projetos
-                    desenvolvidos pela organização.
-                </p>
-
-            </div>
-
-        </div>
+</div>
 
 
-        <div class="news">
+<div class="noticia">
 
-            <div class="news-top">!</div>
+<div class="noticia-top">
+01
+</div>
 
-            <div class="news-content">
+<div class="noticia-content">
 
-                <small>ATUALIZAÇÃO</small>
+<small>PROJETO</small>
 
-                <h3>Informações oficiais</h3>
+<h3>Novos projetos</h3>
 
-                <p>
-                    Todas as informações oficiais serão
-                    divulgadas neste portal.
-                </p>
+<p>
+Novos projetos e iniciativas serão divulgados
+nesta página.
+</p>
 
-            </div>
+</div>
 
-        </div>
-
-    </div>
-
-</section>
+</div>
 
 
-<!-- CONTATO -->
+<div class="noticia">
 
-<section class="contact" id="contato">
+<div class="noticia-top">
+!
+</div>
 
-    <div class="section-title">
-        <small>Fale conosco</small>
-        <h2>Entre em contato</h2>
-    </div>
+<div class="noticia-content">
 
-    <div class="contact-box">
+<small>AVISO</small>
 
-        <h3>PARTIDO 777</h3>
+<h3>Comunicados oficiais</h3>
 
-        <p>
-            Para dúvidas, sugestões, participação em projetos
-            ou outras informações, entre em contato através
-            dos canais oficiais da organização.
-        </p>
+<p>
+Acompanhe aqui os principais comunicados
+da organização.
+</p>
 
-        <a href="#" class="btn btn-primary">
-            Canal Oficial
-        </a>
+</div>
 
-    </div>
+</div>
+
+</div>
 
 </section>
 
 
-<!-- FOOTER -->
+<section class="contato" id="contato">
+
+<div class="section-title">
+
+<small>CONTATO</small>
+
+<h2>Entre em contato</h2>
+
+</div>
+
+<div class="contato-box">
+
+<h3>PARTIDO 777</h3>
+
+<p>
+Para informações, sugestões, projetos ou outros assuntos,
+utilize nossos canais oficiais.
+</p>
+
+<a href="#" class="btn primary">
+Canal Oficial
+</a>
+
+</div>
+
+</section>
+
 
 <footer>
 
-    <strong>PARTIDO 777</strong>
+<strong>PARTIDO 777</strong>
 
-    <p>
-        © 2026 Partido 777. Todos os direitos reservados.
-    </p>
+<p>
+© 2026 Partido 777 — Página institucional.
+</p>
 
-    <p>
-        Este site é uma página institucional.
-    </p>
+<p>
+Todos os direitos reservados.
+</p>
 
 </footer>
-
 
 </body>
 </html>
